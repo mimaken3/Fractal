@@ -1,13 +1,14 @@
 #include<stdio.h>
 #include<math.h>
 #include<stdlib.h>
-#define N 10000 
+#define N 100000 
 int main(){
   int i,j;
   double x,y,x1,y1,sx,sy,th,th2,tx,ty,r;
   double x2,y2,z,l;
   double x3,y3;
   double x4,y4;
+  double x1_tmp,y2_tmp;
 
   FILE *fp;
   fp = fopen("gohho.dat","w");
@@ -38,23 +39,32 @@ int main(){
     x1 = sx * cos(th) * x - sx * sin(th) * y + tx;
     y1 = sy * sin(th) * x + sy * cos(th) * y + ty;
 
-    /* x = x1; */
-    /* y = y1; */
-
-    /*  テスト */
-    x2 = x * cos(60) - y * sin(60) + 1.0/3.0 ;
-    y2 = -x * sin(60) - y * cos(60);
-
-    x3 = x * cos(-60) - y * sin(-60) + 1.0/2.0;
-    y3 = x * sin(-60) + y * cos(-60) + sqrt(3.0)/6.0;
-
-    x4 = x * cos(0) - y * sin(0) + 2.0/3.0;
-    y4 = x * sin(0) + y * cos(0);
+    /* x1 = sx * (1.0/3.0)*cos(th) * x - sx * (1.0/3.0)*sin(th) * y + tx; */
+    /* y1 = sy * (1.0/3.0)*sin(th) * x + sy * (1.0/3.0)*cos(th) * y + ty; */
 
     x = x1;
     y = y1;
 
-    fprintf(fp,"%f %f\n",x,y); /*  元々あった */
+    /*  テスト */
+
+    x1_tmp = x * (1.0/3.0)*cos(0) - y * (1.0/3.0)*sin(0);
+    y2_tmp = -x * (1.0/3.0)*sin(0) - y * (1.0/3.0)*cos(0);
+
+    x2 = x * (1.0/3.0)*cos(60) - y * (1.0/3.0)*sin(60) + 1.0/3.0 ;
+    y2 = -x * (1.0/3.0)*sin(60) - y * (1.0/3.0)*cos(60);
+
+    x3 = x * (1.0/3.0)*cos(-60) - y * (1.0/3.0)*sin(-60) + 1.0/2.0;
+    y3 = x * (1.0/3.0)*sin(-60) + y * (1.0/3.0)*cos(-60) + sqrt(3.0)/6.0;
+
+    x4 = x * (1.0/3.0)*cos(0) - y * (1.0/3.0)*sin(0) + 2.0/3.0;
+    y4 = x * (1.0/3.0)*sin(0) + y * (1.0/3.0)*cos(0);
+
+    /* x = x1; */
+    /* y = y1; */
+
+    /* fprintf(fp,"%f %f\n",x,y); #<{(|  元々あった |)}># */
+
+    fprintf(fp,"%f %f\n",x1_tmp,y2_tmp);
     fprintf(fp,"%f %f\n",x2,y2);
     fprintf(fp,"%f %f\n",x3,y3);
     fprintf(fp,"%f %f\n",x4,y4);
