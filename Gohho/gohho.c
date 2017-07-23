@@ -6,10 +6,8 @@ int main(){
   int i,j;
   double x,y,x1,y1,sx,sy,th,th2,tx,ty,r;
   double x2,y2,z,l;
-  double x_tmp,y_tmp,z_tmp,l_tmp;
-  double x_reverse_left,y_reverse_left;
-  double x_reverse_right,y_reverse_right;
-
+  double x3,y3;
+  double x4,y4;
 
   FILE *fp;
   fp = fopen("gohho.dat","w");
@@ -40,26 +38,31 @@ int main(){
     x1 = sx * cos(th) * x - sx * sin(th) * y + tx;
     y1 = sy * sin(th) * x + sy * cos(th) * y + ty;
 
+    /* x = x1; */
+    /* y = y1; */
+
+    /*  テスト */
+    x2 = x * cos(60) - y * sin(60) + 1.0/3.0 ;
+    y2 = -x * sin(60) - y * cos(60);
+
+    x3 = x * cos(-60) - y * sin(-60) + 1.0/2.0;
+    y3 = x * sin(-60) + y * cos(-60) + sqrt(3.0)/6.0;
+
+    x4 = x * cos(0) - y * sin(0) + 2.0/3.0;
+    y4 = x * sin(0) + y * cos(0);
+
     x = x1;
     y = y1;
 
-/*  テスト */
-    x_reverse_left = x * cos(-150) - y * sin(-150);
-    y_reverse_left= -x * sin(-150) - y * cos(-150);
+    fprintf(fp,"%f %f\n",x,y); /*  元々あった */
+    fprintf(fp,"%f %f\n",x2,y2);
+    fprintf(fp,"%f %f\n",x3,y3);
+    fprintf(fp,"%f %f\n",x4,y4);
 
-    x_reverse_right = x * cos(-90) - y * sin(-90) + 1;
-    y_reverse_right = x * sin(-90) + y * cos(-90);
-
-/* ここまで */
-
-    fprintf(fp,"%f %f\n",x,y);
-    fprintf(fp,"%f %f\n",x_reverse_left,y_reverse_left);
-    fprintf(fp,"%f %f\n",x_reverse_right,y_reverse_right);
-    
-    /* fprintf(fp,"%f %f\n",x_tmp,y_tmp); */
-    /* fprintf(fp,"%f %f\n",z_tmp,l_tmp); */
+    /* ここまで */
 
   }
+
   fclose(fp);
   return 0;
 }
