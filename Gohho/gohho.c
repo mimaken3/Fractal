@@ -9,7 +9,7 @@ int main(){
   double x_tmp,y_tmp,z_tmp,l_tmp;
   double x_reverse_left,y_reverse_left;
   double x_reverse_right,y_reverse_right;
-  double x_under,y_under;
+
 
   FILE *fp;
   fp = fopen("gohho.dat","w");
@@ -44,24 +44,17 @@ int main(){
     y = y1;
 
 /*  テスト */
-    /* 右側 */
     x_reverse_left = x * cos(-150) - y * sin(-150);
     y_reverse_left= -x * sin(-150) - y * cos(-150);
 
-    /* 左側 */
     x_reverse_right = x * cos(-90) - y * sin(-90) + 1;
-    y_reverse_left = x * sin(-90) + y * cos(-90);
-
-    /* 下 */
-    x_under = x * cos(-90) - y * sin(-90) + 5;
-    y_under = x * sin(-90) + y * cos(-90) + 5;
+    y_reverse_right = x * sin(-90) + y * cos(-90);
 
 /* ここまで */
 
     fprintf(fp,"%f %f\n",x,y);
     fprintf(fp,"%f %f\n",x_reverse_left,y_reverse_left);
     fprintf(fp,"%f %f\n",x_reverse_right,y_reverse_right);
-    fprintf(fp,"%f %f\n",x_under,y_under);
     
     /* fprintf(fp,"%f %f\n",x_tmp,y_tmp); */
     /* fprintf(fp,"%f %f\n",z_tmp,l_tmp); */
