@@ -61,6 +61,5 @@ int main(){
 
   }
   fclose(fp);
-aaa
   return 0;
 }
