@@ -1,0 +1,59 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+#define N 100000
+
+int main(){
+  int i,t;
+  double x = 0,y = 0,x1,y1,sx,sy,th,tx,ty,r;
+  double x2,y2;
+  double x3,y3;
+  double x3,y3;
+
+
+  FILE *fp;
+  fp = fopen("fractal2.dat","w");
+  srand(10);
+
+  sx = sy = 1.0/2.0;
+  th = 0.0;
+
+  for(i = 0;i < N;i++){
+    r = rand()/(RAND_MAX + 1.0);
+
+    if(r > 2.0/3.0){
+      tx = ty = 0.0;
+    }else if(r > 1.0/3.0){
+      tx = 1.0/2.0;
+      ty = 0.0;
+    }else if(r < 0.75){
+      tx = 1.0/4.0;
+      ty = 1.0/2.0;
+    }else{
+      tx = 1.0/4.0;
+      ty = 1.0/2.0;
+    }
+    x1 = sx * cos(th) * x - sx * sin(th) * y + tx;
+    y1 = sy * sin(th) * x + sy * cos(th) * y + ty;
+
+    x = x1;
+    y = y1;
+
+   
+    x2 = (1.0/3.0) * sx * cos(th) * x - sx * sin(th) * y + tx;
+    y2 = (sy * sin(th) * x + sy * cos(th) * y + ty;
+
+
+
+    x = x1;
+    y = y1;
+
+
+
+    fprintf(fp,"%f %f\n",x/3.0,y/3.0);
+
+  }
+  fclose(fp);
+
+  return 0;
+}
