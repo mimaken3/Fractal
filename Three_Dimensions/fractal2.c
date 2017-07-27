@@ -40,17 +40,17 @@ int main(){
     /* y = y1; */
 
     x2 = sx * cos(90) * x - sx * sin(90) * y + tx;
-    y2 = sy * sin(90) * x + sy * cos(90) * y + ty;
+    y2 = -sy * sin(-90) * x - sy * cos(-90) * y + ty;
 
     /* x2 = sx * cos(90) - sy * sin(90); */
     /* y2 = -sx * sin(90) - sy * cos(90) + 1.0/3.0; */
 
 
-    /* x = x1; */
-    /* y = y1; */
+    x = x1;
+    y = y1;
 
-    fprintf(fp,"%f %f\n",x1/3.0,y1/3.0);
-    /* fprintf(fp,"%f %f\n",x/3.0,y/3.0); */
+    /* fprintf(fp,"%f %f\n",x1/3.0,y1/3.0); */
+    fprintf(fp,"%f %f\n",x/3.0,y/3.0);
     fprintf(fp,"%f %f\n",x2/3.0,y2/3.0);
 
 
